@@ -1,0 +1,94 @@
+
+<div class="row">
+  <section class="col-xs-4 sidebar">
+    <ul class="nav nav-sidebar">
+      <li>
+        <a href="" ng-click="addAquatic()"> <span class="glyphicon glyphicon-plus"> Add New Aquatic</span> </a>
+      </li>
+      <li data-ng-repeat="a in allAquaticsList">
+        <a href="" ng-click="getAquaticDetail(a)"> 
+          {{a.common_name}}<span ng-show="a.common_name"> - </span>{{a.genus}} &nbsp; {{a.species}} 
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="col-xs-8 col-xs-offset-4 main">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class="col-sm-9">
+          <h4>{{aquaticDetails.common_name}}<span ng-show="aquaticDetails.common_name"> - </span>{{aquaticDetails.genus}} {{aquaticDetails.species}}</h4>
+        </div>
+        <button type="submit" class="btn btn-default pull-right" data-ng-click="saveAquatic(aquaticDetails)">Save Aquatic</button>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="commonNameInput">Common Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="commonNameInput" placeholder="Common Name" data-ng-model="aquaticDetails.common_name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label" for="genusInput">Genus</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="genusInput" placeholder="Enter Genus" data-ng-model="aquaticDetails.genus">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="speciesInput">Species</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="speciesInput" placeholder="species" data-ng-model="aquaticDetails.species">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="memberFirst">Member Name</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="memberFirst" placeholder="Member First Name" data-ng-model="aquaticDetails.member_first_name">
+        </div>
+        <label class="sr-only control-label" for="memberLast">Member Last Name</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="memberLast" placeholder="Member Last Name" data-ng-model="aquaticDetails.member_last_name">
+        </div>
+        <label class="sr-only control-label" for="date">Date</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="date" placeholder="MM/DD/YYYY" data-ng-model="aquaticDetails.date">
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="col-sm-2">
+          <label class="control-label" for="aquaticType">Type</label>
+          <select id="aquaticType" ng-options="type as type for type in aquaticTypes" ng-model="aquaticDetails.type"></select>
+        </div>
+
+        <div class="col-sm-2" ng-show="aquaticDetails.type == 'bap'">
+          <label class="control-label" for="aquaticTarget">Target</label>
+          <select id="aquaticTarget" ng-options="item.value as item.value for item in aquaticVals" ng-model="aquaticDetails.target"></select>
+        </div>
+        <div class="col-sm-2" ng-show="aquaticDetails.type == 'bap'">
+          <label class="control-label" for="aquaticClass">Class</label>
+          <select id="aquaticClass" ng-options="item as item for item in aquaticClasses" ng-model="aquaticDetails.class"></select>
+        </div>
+        <div class="col-sm-2" ng-show="aquaticDetails.type == 'bap'">
+          <label class="control-label" for="aquaticGroup">Group</label>
+          <select id="aquaticGroup" ng-options="item as item for item in aquaticGroups" ng-model="aquaticDetails.class_group"></select>
+        </div>
+
+        <div class="col-sm-2" ng-show="aquaticDetails.type == 'hap'">
+          <label class="control-label" for="aquaticFlower">Flower</label>
+          <select id="aquaticFlower" ng-options="item.value as item.value for item in aquaticVals" ng-model="aquaticDetails.flower"></select>
+        </div>
+        <div class="col-sm-2" ng-show="aquaticDetails.type == 'hap'">
+          <label class="control-label" for="aquaticSeed">Seed</label>
+          <select id="aquaticSeed" ng-options="item.value as item.value for item in aquaticVals" ng-model="aquaticDetails.seed"></select>
+        </div>
+
+        <div class="col-sm-2">
+          <label class="control-label" for="aquaticPoints">Points</label>
+          <input id="aquaticPoints" type="number" max="20" min="5" ng-model="aquaticDetails.points"></select>
+        </div>
+      </div> 
+
+    </form>  
+  </section>
+
+</div>
