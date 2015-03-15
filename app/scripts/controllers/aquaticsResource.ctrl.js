@@ -7,9 +7,8 @@
  * # aquaticsResourceCtrl
  * Controller for interacting with aquaticsResources
  */
-
-angular.module('spawnApp').controller('aquaticsResourceCtrl', ['$scope', 'aquaticsResourceSvc', 
-  function ($scope, aquaticsResourceSvc) {
+module.exports = function (ngModule) {
+  ngModule.controller('aquaticsResourceCtrl', ['$scope', 'aquaticsResourceSvc', function ($scope, aquaticsResourceSvc) {
 	
 	$scope.aquaticTypes = ['bap', 'hap'];
 	$scope.aquaticClasses = [1,2,3,4,5,6,7,8,9,10,11,12,13];
@@ -58,5 +57,7 @@ angular.module('spawnApp').controller('aquaticsResourceCtrl', ['$scope', 'aquati
 		$scope.allAquaticsList = aquaticsResourceSvc.add($scope.allAquaticsList);
 		$scope.getAquaticDetail($scope.allAquaticsList[0]);
 	};
-		
+
+//////
   }]);
+};

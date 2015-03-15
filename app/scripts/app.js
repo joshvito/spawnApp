@@ -1,5 +1,7 @@
 'use strict';
 
+var angular = require('angular');
+
 /**
  * @ngdoc overview
  * @name spawnApp
@@ -8,9 +10,7 @@
  *
  * Main module of the application.
  */
-
-// Main app definition
-angular.module('spawnApp', [
+/*var app = angular.module('spawnApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -18,24 +18,56 @@ angular.module('spawnApp', [
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'aquaticsResourceCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+  ]);
+// Main app definition
+app.config(function ($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'views/main.html',
+      controller: 'aquaticsResourceCtrl'
+    })
+    .when('/about', {
+      templateUrl: 'views/about.html',
+      controller: 'AboutCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+});*/
 
+// Main app definition
+
+var mod = angular.module('spawnApp', [
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch',
+  'ui.bootstrap'
+]);
+ 
+
+angular.module('app')
+  .config(['$routeProvider', function ($routeProvider) {
+
+    // Redirects and Otherwise //
+    $routeProvider
+    .when('/', {
+      templateUrl: 'views/main.html',
+      controller: 'aquaticsResourceCtrl'
+    })
+    .when('/about', {
+      templateUrl: 'views/about.html',
+      controller: 'AboutCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+
+}]);
 
 // include all the necessary js files ( controllers, services, directors, filters... etc )
 //
-//require('services/aquaticsResource.svc')(mod);
-//require('controllers/aquaticsResource.ctrl')(mod);
+require('./controllers/index.js')(mod);
+require('./services/index.js')(mod);

@@ -7,9 +7,8 @@
  * # aquaticsResourceSvc
  * Service to get, put, post updates to db for aquatics of the spawnApp
  */
-
-angular.module('spawnApp').factory('aquaticsResourceSvc', ['$http', 
-  function ($http) {
+module.exports = function (ngModule) {
+  ngModule.factory('aquaticsResourceSvc', ['$http', function ($http) {
     
     var apiAddy = 'http://gss-0as1s:3000/api/aquatics'; 
   	function getAllAquatics(newAddy) {
@@ -62,4 +61,6 @@ angular.module('spawnApp').factory('aquaticsResourceSvc', ['$http',
       add: addNew
   	};
 
+//////
   }]);
+};
